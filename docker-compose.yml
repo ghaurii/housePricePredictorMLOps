@@ -1,0 +1,19 @@
+services:
+
+  fastapi:
+    image: fastapi:dev
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8000:8000"
+
+  streamlit:
+    image: streamlit_app:dev
+    build:
+      context: ./streamlit_app
+      dockerfile: dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://fastapi:8000
