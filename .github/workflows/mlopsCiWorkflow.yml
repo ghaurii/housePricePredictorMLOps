@@ -26,11 +26,11 @@ jobs:
           python src/features/engineer.py   --input data/processed/cleaned_house_data.csv   --output data/processed/featured_house_data.csv   --preprocessor models/trained/preprocessor.pkl
       - name: start mlflow server
         run: |
-          docker-compose -f deployment/mlflow/docker-compose.yaml up -d
+          docker compose -f deployment/mlflow/docker-compose.yaml up -d
       - name: run model training
         run: |
           python src/models/train_model.py   --config configs/model_config.yaml   --data data/processed/featured_house_data.csv   --models-dir models   --mlflow-tracking-uri http://localhost:5555
       - name: clean mlflow server
         run: |
-          docker-compose -f deployment/mlflow/docker-compose.yaml down
+          docker compose -f deployment/mlflow/docker-compose.yaml down
           docker rmi ghcr.io/mlflow/mlflow:latest
