@@ -52,7 +52,7 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: processed-data
-                path: data/processed/featured_house_data.csv
+                path: data/processed/
             - name: Setup MLflow server
               run: |
                 docker compose -f deployment/mlflow/docker-compose.yaml up -d
