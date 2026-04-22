@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: model
+  name: model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: model
+    spec:
+      containers:
+      - image: musaghauriii/house-price-model:7085c40182c8fb53e8b04e810f3f26a4d0410ab8
+        name: house-price-model
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+status: {}
