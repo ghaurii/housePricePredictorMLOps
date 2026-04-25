@@ -17,4 +17,8 @@ spec:
         metricName: fastapi_latency_p95
         query: |
           histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[1m])) by (le))
-        threshold: "0.5"
+        threshold: "0.5"  # scale up if latency exceeds 80ms
+    - type: cpu
+      metricType: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+      metadata:
+        value: "50"
