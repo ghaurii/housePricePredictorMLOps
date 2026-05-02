@@ -16,7 +16,7 @@ spec:
         app: streamlit
     spec:
       containers:
-      - image: musaghauriii/streamlit_app:v1
+      - image: musaghauriii/streamlit_app:v2
         name: streamlit-app
         imagePullPolicy: IfNotPresent
         ports:
